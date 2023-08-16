@@ -1,5 +1,5 @@
 import os
-
+import pickle
 import cv2
 
 cap = cv2.VideoCapture(0)
@@ -16,6 +16,13 @@ for path in modePathList:
 print(len(imgModeList))
 
 
+# Import the encoding file (P) -> then load file
+file = open('Encodefile.p', 'rb', )
+encodeListKnownWithIds = pickle.load(file)
+# Extra file encoding
+file.close()
+encodeListKnown, studentIds = encodeListKnownWithIds
+print(studentIds)
 while True:
     success, img = cap.read()
     # Chen 2 lop layer lai voi nhau
